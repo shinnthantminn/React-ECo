@@ -12,7 +12,7 @@ const Nav = () => {
   const handleToggle = () => setShow(pre => !pre)
 
   return (
-    <div className="flex justify-between items-center border-b border-b-blue-300">
+    <div className="flex fixed w-[80%] bg-white justify-between items-center border-b border-b-blue-300">
        <div className="space-x-8 flex items-center">
         <div>
             <h1 className="text-2xl font-[700]">sneakers</h1>
