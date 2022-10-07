@@ -1,9 +1,12 @@
-import { useState } from "react"
+import { useState,useContext } from "react"
 import {AiOutlineShoppingCart} from "react-icons/ai"
 import Avater from "../../image/image-avatar.png"
 import Cart from "./Cart"
+import {CountingContext} from "../../store/CountingProvider"
 
 const Nav = () => {
+
+  const {select} = useContext(CountingContext)
 
   const [show ,setShow] = useState(false)
 
@@ -27,6 +30,12 @@ const Nav = () => {
        <div className="flex items-center space-x-5">
 
         <button className="relative" onClick={handleToggle}>
+
+          {select > 0 && <div className="absolute bg-orange-100 text-white text-[9px] -right-[8px] -top-[7px] px-[6px] rounded-lg">
+              <p>{select}</p>
+            </div>
+          }
+          
           <AiOutlineShoppingCart/>
           <Cart toggle={show}/>
         </button>

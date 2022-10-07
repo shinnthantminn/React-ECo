@@ -1,18 +1,14 @@
 import {FaPlus,FaMinus} from "react-icons/fa"
 import DynamiteBtn from "../UI/DynamiteBtn"
-import { useState } from "react"
+import { useState,useContext } from "react"
 
 import {AiOutlineShoppingCart} from "react-icons/ai"
+import {CountingContext} from "../../store/CountingProvider"
 
 const TextContainer = () => {
-    const [count,setCount] = useState(0);
 
-    const handleCounting = (type) => type ? setCount(pre => pre + 1) : count > 0 && setCount(pre => pre - 1)
+    const {count,handleCounting,handleChange,handleAdd} = useContext(CountingContext)
 
-    const handleChange = (e) => {
-        setCount(+e.target.value)
-    }
-    
 
   return (
     <div className="w-[50%]">
@@ -65,7 +61,7 @@ const TextContainer = () => {
 
 
                 <div>
-                    <DynamiteBtn>
+                    <DynamiteBtn onClick={handleAdd}>
                        <AiOutlineShoppingCart/>
                         <p>Add to cart</p>
                     </DynamiteBtn>

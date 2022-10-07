@@ -6,16 +6,21 @@ import Temp1 from "../../image/image-product-1-thumbnail.jpg"
 import Temp2 from "../../image/image-product-2-thumbnail.jpg" 
 import Temp3 from "../../image/image-product-3-thumbnail.jpg" 
 import Temp4 from "../../image/image-product-4-thumbnail.jpg" 
-import { useState } from "react"
+import { useState,useContext } from "react"
+
+import {CountingContext} from "../../store/CountingProvider"
 
 const ImageContainer = () => {
     const Temp = [Temp1, Temp2, Temp3, Temp4];
     const Image = [img1, img2, img3, img4];
 
-    const [image,setImage] = useState(Image[0])
+    const {handleIndexChange,index} = useContext(CountingContext)
+
+    const [image,setImage] = useState(Image[index])
 
     const handleImageChange = (index) => {
         setImage(Image[index])
+        handleIndexChange(index)
     }
 
   return (
